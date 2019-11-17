@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro"
+       name="ur5e" >
+
+  <!-- common stuff -->
+  <xacro:include filename="$(find ur_e_description)/urdf/common.gazebo.xacro" />
+
+  <!-- ur5e -->
+  <xacro:include filename="$(find ur_e_description)/urdf/ur5e.urdf.xacro" />
+  <!--robotiq 2f85-->
+  <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_arg2f_85_model.xacro" />
+  <!-- cam (no official urdf file found so far 11/15/2019, Meiying) -->
+  <xacro:include filename="$(find robotiq_2f_85_gripper_visualization)/urdf/robotiq_cam.xacro" />
+
+  <!-- arm -->
+  <xacro:arg name="kinematics_config" default="$(find ur_e_description)/config/ur5e_default.yaml"/>
+  <xacro:ur5e_robot prefix="" joint_limited="true"
+    shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
+    shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${pi}"
+    elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${pi}"
+    wrist_1_lower_limit="${-pi}" wrist_1_upper_limit="${pi}"
+    wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi}"
+    wrist_3_lower_limit="${-pi}" wrist_3_upper_limit="${pi}"
+    kinematics_file="${load_yaml('$(arg kinematics_config)')}"
+  />
+  <xacro:robotiq_cam prefix=""/>
+
+  <link name="world" />
+
+  <joint name="world_joint" type="fixed">
+    <parent link="world" />
+    <child link = "base_link" />
+    <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <joint name="arm_cam_joint" type="fixed">
+    <parent link="tool0" />
+    <child link = "robotiq_cam_link" />
+    <origin xyz="0.0 0.0 0.0112" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <joint name="cam_gripper_joint" type="fixed">
+    <parent link="robotiq_cam_link" />
+    <child link = "robotiq_arg2f_base_link" />
+    <origin xyz="0.0 0.0 0.0112" rpy="0.0 0.0 0.0" />
+  </joint>
+
+  <link name="virtual_ee_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder length="0.001" radius="0.02"/>
+        </geometry>
+        <material name="">
+          <color rgba="0 0 0.1 1" />
+        </material>
+      </visual>
+  </link>
+
+  <joint name="virtual_ee_joint" type="fixed">
+    <parent link="robotiq_arg2f_base_link" />
+    <child link = "virtual_ee_link" />
+    <origin xyz="0.0 0.0 0.1445" rpy="0.0 0.0 0.0" />
+  </joint>
+
+</robot>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="robotiq_cam" params="prefix">
+    <link name="${prefix}robotiq_cam_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <mass value="0.16" />
+        <inertia ixx="0.000111" ixy="0.0" ixz="0.0" iyy="0.00007" iyz="0.000003" izy="0.000003" izz="0.000165" />
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <cylinder length="0.0224" radius="0.038"/>
+        </geometry>
+        <material name="">
+          <color rgba="0 0 0.8 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+           <cylinder length="0.0224" radius="0.038"/>
+        </geometry>
+      </collision>
+    </link>
+  </xacro:macro>
+
+</robot>
