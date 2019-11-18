@@ -22,3 +22,7 @@ Those are the extra changes needed so that the driver or the arm + wrist cam + g
 ## Directory added:
 
 - universal_robot/ur5e_cam_2f85_moveit_config
+
+## Directary: other
+
+If the arm + gripper moveit config directary needs to be re-generated, the launch files in the the other directory will need to be replaced so that the "limited" UR planner could work.
