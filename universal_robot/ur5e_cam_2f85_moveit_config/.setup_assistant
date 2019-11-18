@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: ur_e_description
+    relative_path: urdf/ur5e_cam_2f85_robot.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/ur5e_cam_2f85.srdf
+  CONFIG:
+    author_name: Meiying
+    author_email: meiying.qin@yale.edu
+    generated_timestamp: 1574035454
