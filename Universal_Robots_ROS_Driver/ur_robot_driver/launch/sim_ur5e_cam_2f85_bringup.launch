@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="debug" default="false" doc="Debug flag that will get passed on to ur_common.launch"/>
-  <arg name="robot_ip" default="192.168.1.115" doc="IP address by which the robot can be reached."/>
+  <arg name="robot_ip" default="127.0.0.1" doc="IP address by which the robot can be reached."/>
   <arg name="tf_prefix" default="" doc="tf_prefix used for the robot."/>
   <arg name="controllers" default="joint_state_controller scaled_pos_traj_controller speed_scaling_state_controller force_torque_sensor_controller" doc="Controllers that are activated by default."/>
   <arg name="stopped_controllers" default="pos_traj_controller" doc="Controllers that are initally loaded, but not started."/>
