@@ -14,13 +14,22 @@
 
   <!-- arm -->
   <xacro:arg name="kinematics_config" default="$(find ur_e_description)/config/ur5e_default.yaml"/>
+<!--   <xacro:ur5e_robot prefix="" joint_limited="true"
+    shoulder_pan_lower_limit="${-pi + 2.901550769805908}" shoulder_pan_upper_limit="${pi + 2.901550769805908}"
+    shoulder_lift_lower_limit="${-pi / 4 + -1.9379054508604945}" shoulder_lift_upper_limit="${pi / 2 + -1.9379054508604945}"
+    elbow_joint_lower_limit="${-pi + 2.242737118397848}" elbow_joint_upper_limit="${pi + 2.242737118397848}"
+    wrist_1_lower_limit="${-pi + -0.3946760457805176}" wrist_1_upper_limit="${pi + -0.3946760457805176}"
+    wrist_2_lower_limit="${-pi + 1.2857670783996582}" wrist_2_upper_limit="${pi + 1.2857670783996582}"
+    wrist_3_lower_limit="${-2.0 * pi}" wrist_3_upper_limit="${2.0 * pi}"
+    kinematics_file="${load_yaml('$(arg kinematics_config)')}"
+  /> -->
   <xacro:ur5e_robot prefix="" joint_limited="true"
-    shoulder_pan_lower_limit="${-pi}" shoulder_pan_upper_limit="${pi}"
-    shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${pi}"
+    shoulder_pan_lower_limit="${-pi / 2.0}" shoulder_pan_upper_limit="${pi}"
+    shoulder_lift_lower_limit="${-pi}" shoulder_lift_upper_limit="${0.0}"
     elbow_joint_lower_limit="${-pi}" elbow_joint_upper_limit="${pi}"
     wrist_1_lower_limit="${-pi}" wrist_1_upper_limit="${pi}"
     wrist_2_lower_limit="${-pi}" wrist_2_upper_limit="${pi}"
-    wrist_3_lower_limit="${2 * -pi}" wrist_3_upper_limit="${2 * pi}"
+    wrist_3_lower_limit="${-2 * pi}" wrist_3_upper_limit="${pi}"
     kinematics_file="${load_yaml('$(arg kinematics_config)')}"
   />
   <xacro:robotiq_cam prefix=""/>
